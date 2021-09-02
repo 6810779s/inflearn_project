@@ -43,7 +43,7 @@ app.post("/mainCourse", (req, res) => {
   let user_name = req.body.name;
   res.send(mainCourse(position, user_name));
 });
-
+//mainCourse까지 만들음.
 app.use((req, res) => {
   res.send(`<h1>Sorry, page not found :(</h1>`);
 });
