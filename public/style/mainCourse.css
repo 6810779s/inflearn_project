@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 10px;
+}
+
+section {
+  width: 100rem;
+  margin: auto;
+}
+
+.header {
+  height: 8rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .header_center {
+  width: 22rem;
+  padding-top: calc((8rem - 3rem)/2);
+  position: relative;
+}
+
+.header .header_center input {
+  font-size: 1.5rem;
+  height: 3rem;
+  margin: 0;
+}
+
+.header .header_center input[type=text] {
+  width: 22rem;
+  position: absolute;
+  border: 0.5px solid #7acc98;
+}
+
+.header .header_center input[type=text]:focus {
+  outline: none;
+}
+
+.header .header_center input[type=submit] {
+  width: 5rem;
+  position: absolute;
+  background: #7acc98;
+  border: none;
+  cursor: pointer;
+  right: 0;
+}
+
+.header .header_right {
+  font-size: 2rem;
+  padding-top: calc((8rem - 2.533rem)/2);
+}
+/*# sourceMappingURL=mainCourse.css.map */
