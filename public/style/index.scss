@@ -1,0 +1,117 @@
+@import '../variables/variables.scss';
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body{
+  width: 100%;
+  height: 100%;
+  background: $mainColor;
+  font-size: 10px;
+
+  .caption{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(59, 59, 59, 0.623);
+  }
+}
+
+.container{
+  padding-top: 7rem;
+  position: relative;
+  
+  .wrap{
+    @include mainWidth;
+    height: 70rem;
+    background: white;
+    margin: auto;
+    box-shadow: 10px 10px 15px $boxshadow;
+  }
+}
+
+.top_bar{
+  @include mainWidth;
+  height: 5rem;
+  display: table-cell;
+  vertical-align: middle;
+  border-bottom: 1px solid $subMainColor1;
+  padding-top: calc((5.1rem - 2.344rem)/2);
+  
+  img{
+    width: 15rem;
+    line-height: calc((5.1rem - 2.344rem)/2);
+  }
+}
+
+.article{
+  @include mainWidth;
+  
+  // background: $subMainColor;
+
+  form{
+    @include mainWidth;
+    height: 100%;
+    input{
+      @include mainWidth;
+    }
+
+    .putName{
+      padding: 2rem 2rem 2rem 1rem;
+      label{
+        font-size: $mainTextSize;
+        margin-right: 2rem;
+      }
+      input[type=text]{
+        width: 20rem;
+        height: 2rem;
+        font-size: $mainTextSize;
+        padding: 0.5rem;
+      }
+    }
+    .seclect_position{
+      height: calc((70rem - 5.133rem) - 7.4rem);
+      display: flex;
+      flex-direction: column;
+      
+      button[type=submit]{
+        position: relative;
+        border: none;
+        height: calc((70rem - 7.4rem)/2);
+        background: $subMainColor1;
+        cursor: pointer;
+        p{
+          position: absolute;
+          top: 1rem;
+          left: 1rem;
+          font-size: $mainTextSize;
+        }
+        img[alt=teacher]{
+          height: 20rem;
+          margin-left: 9rem;
+          
+        }
+        img[alt=student]{
+          height: 22rem;
+        }
+
+        &:first-child{
+          border-bottom: 1px solid rgb(224, 222, 222);
+          
+        }
+        &:hover{
+          background: $subMainColor2;
+        }
+        
+      }
+
+    }
+    
+    
+    
+  }
+}
+

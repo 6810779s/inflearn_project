@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #7acc98;
+  font-size: 10px;
+}
+
+html .caption,
+body .caption {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(59, 59, 59, 0.623);
+}
+
+.container {
+  padding-top: 7rem;
+  position: relative;
+}
+
+.container .wrap {
+  width: 45rem;
+  height: 70rem;
+  background: white;
+  margin: auto;
+  box-shadow: 10px 10px 15px #000000a8;
+}
+
+.top_bar {
+  width: 45rem;
+  height: 5rem;
+  display: table-cell;
+  vertical-align: middle;
+  border-bottom: 1px solid #b3cc7f;
+  padding-top: calc((5.1rem - 2.344rem)/2);
+}
+
+.top_bar img {
+  width: 15rem;
+  line-height: calc((5.1rem - 2.344rem)/2);
+}
+
+.article {
+  width: 45rem;
+}
+
+.article form {
+  width: 45rem;
+  height: 100%;
+}
+
+.article form input {
+  width: 45rem;
+}
+
+.article form .putName {
+  padding: 2rem 2rem 2rem 1rem;
+}
+
+.article form .putName label {
+  font-size: 2rem;
+  margin-right: 2rem;
+}
+
+.article form .putName input[type=text] {
+  width: 20rem;
+  height: 2rem;
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+.article form .seclect_position {
+  height: calc((70rem - 5.133rem) - 7.4rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.article form .seclect_position button[type=submit] {
+  position: relative;
+  border: none;
+  height: calc((70rem - 7.4rem)/2);
+  background: #b3cc7f;
+  cursor: pointer;
+}
+
+.article form .seclect_position button[type=submit] p {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 2rem;
+}
+
+.article form .seclect_position button[type=submit] img[alt=teacher] {
+  height: 20rem;
+  margin-left: 9rem;
+}
+
+.article form .seclect_position button[type=submit] img[alt=student] {
+  height: 22rem;
+}
+
+.article form .seclect_position button[type=submit]:first-child {
+  border-bottom: 1px solid #e0dede;
+}
+
+.article form .seclect_position button[type=submit]:hover {
+  background: #d6f39c;
+}
+/*# sourceMappingURL=index.css.map */

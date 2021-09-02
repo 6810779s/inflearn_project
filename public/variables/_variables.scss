@@ -1,0 +1,9 @@
+$mainColor: rgb(122,204,152);
+$subMainColor1: rgb(179,204,127);
+$subMainColor2: rgb(214,243,156);
+$boxshadow: #000000a8;
+$mainTextSize: 2rem;
+
+@mixin mainWidth{
+  width: 45rem
+}
