@@ -143,6 +143,12 @@ section {
 .article .article_right .control button {
   font-size: 2rem;
   cursor: pointer;
+  display: none;
+}
+
+.article .article_right .control button.show {
+  display: block;
+  float: left;
 }
 
 .article .article_right .control a {

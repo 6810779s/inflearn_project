@@ -1,4 +1,10 @@
 const mainCourse = function (position, user_name, lists) {
+  let html = "";
+  if (position === "강사") {
+    html = `<button class="create show">강의 올리기</button>`;
+  } else {
+    html = `<button class="create">강의 올리기</button>`;
+  }
   return `
   <!DOCTYPE html>
 <html lang="en">
@@ -31,13 +37,13 @@ const mainCourse = function (position, user_name, lists) {
       </ul>
       <div class="article_right">
         <div class="user_profile">
-          <p>🍀학생 정보</p>
+          <p>🍀${position} 정보</p>
           <p>이름: ${user_name}</p>
           <p>직급: ${position}</p>
         </div>
         <div class="control">
-          <button class="create show">강의 올리기</button>
-          <a href="#top_logo"><p>&#9650;top</p></a>
+          ${html}
+          <a href="#top_logo">&#9650;top</a>
         </div>  
       </div>
     </div>

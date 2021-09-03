@@ -45,14 +45,20 @@ app.post("/mainCourse", (req, res) => {
   let lists = "";
 
   //글자수 25이상이면 ...으로 표시
-  //가격 부분 콤마 표시
+  //가격 부분 1000단위 콤마 표시
   courses.forEach((course) => {
+    const NUM = 30;
+    let price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    let title = course.title;
+    if (title.length > NUM) {
+      title = title.slice(0, NUM) + "...";
+    }
     lists += `
     <li id=${course.id}>
       <div class="coverImg" style="background: url(${course.coverImageUrl}) no-repeat center; background-size: cover;"></div>
-      <p class="title">${course.title}</p>
+      <p class="title">${title}</p>
       <p class="instructorName">${course.instructorName}</p>
-      <p class="price">₩${course.price}</p>
+      <p class="price">₩${price}</p>
   </li>
     `;
   });
