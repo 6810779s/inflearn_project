@@ -8,6 +8,7 @@ function getTemporaryImageURL() {
     return `https://via.placeholder.com/${width}x${height}`;
 }
 exports.getTemporaryImageURL = getTemporaryImageURL;
+
 exports.courses = [
     { id: 1, title: "따라하면서 배우는 웹애플리케이션 만들기" },
     { id: 2, title: "생활코딩 – HTML 기초" },
