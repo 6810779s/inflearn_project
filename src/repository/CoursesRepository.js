@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.searchOnCourse = void 0;
 const Course_1 = __importDefault(require("../model/Course"));
 const courses_1 = require("../data/courses");
+//search
 function* searchGen(arr, keyword) {
     const reg = typeof keyword === "string" ? new RegExp(keyword) : keyword;
     for (const course of arr) {
@@ -16,6 +17,7 @@ function* searchGen(arr, keyword) {
         }
     }
 }
+
 function searchOnCourse(arr, keyword, count) {
     const iter = searchGen(arr, keyword);
     let curr = iter.next();

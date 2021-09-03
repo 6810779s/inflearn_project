@@ -25,33 +25,6 @@ a{
   margin-bottom: 5rem;
   display: flex;
   justify-content:space-between;
-  .header_center{
-    width: 22rem;
-    padding-top: calc((8rem - 3rem)/2);
-    position: relative;
-    input{
-      font-size: 1.5rem;
-      height: 3rem;
-      margin: 0;
-    }
-    input[type=text]{
-      width: 22rem;
-      position:absolute;
-      border: 0.5px solid $mainColor;
-      &:focus{
-        outline: none;
-      }
-
-    }
-    input[type=submit]{
-      width: 5rem;
-      position:absolute;
-      background: $mainColor;
-      border: none;
-      cursor: pointer;
-      right: 0;
-    }
-  }
 
   .header_right{
     font-size: 2rem;
@@ -70,9 +43,8 @@ article{
     .courseMainImg{
       width: 40rem;
       height: 25rem;
-      background: url("https://via.placeholder.com/300x300") no-repeat center;
-      background-size: cover;
       margin: calc((30rem - 25rem)/2) 5rem;
+      background-size: cover;
     }
 
     .courseTitle{
@@ -82,8 +54,8 @@ article{
       color: white;
       h1{
         width: 100%;
-        height: 15rem;
-        font-size: 5rem;
+        height: 16rem;
+        font-size: 3rem;
       }
       p{
         font-size: 2rem;
@@ -95,12 +67,12 @@ article{
     .article_left{
       width: 75rem;
       margin-top: 3rem;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       line-height: 7rem;
 
       .course_infoDetailed{
-        font-size: 3rem;
-        p:last-child{
+        font-size: 1.5rem;
+        p{
           font-size: 2rem;
         }
       }

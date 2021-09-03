@@ -1,0 +1,67 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 10px;
+  background: #7acc98;
+}
+
+section {
+  width: 120rem;
+  padding-top: 20rem;
+  margin: auto;
+}
+
+.wrap {
+  width: 45rem;
+  height: 35rem;
+  background: white;
+  margin: auto;
+  box-shadow: 10px 10px 15px #000000a8;
+}
+
+.top_bar {
+  width: 45rem;
+  height: 5rem;
+  display: table-cell;
+  vertical-align: middle;
+  padding-top: calc((5.1rem - 2.344rem)/2);
+}
+
+.top_bar img {
+  width: 15rem;
+  line-height: calc((5.1rem - 2.344rem)/2);
+}
+
+article {
+  width: 45rem;
+}
+
+article form {
+  width: 45rem;
+  height: 100%;
+  font-size: 2.3rem;
+}
+
+article form li {
+  height: 4rem;
+  line-height: 4rem;
+  list-style: none;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+article form li input {
+  width: 20rem;
+  height: 2.8rem;
+  margin-left: 3rem;
+}
+
+article form li:last-child {
+  margin-top: 5rem;
+}
+/*# sourceMappingURL=createCourse.css.map */

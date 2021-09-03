@@ -26,37 +26,6 @@ a {
   justify-content: space-between;
 }
 
-.header .header_center {
-  width: 22rem;
-  padding-top: calc((8rem - 3rem)/2);
-  position: relative;
-}
-
-.header .header_center input {
-  font-size: 1.5rem;
-  height: 3rem;
-  margin: 0;
-}
-
-.header .header_center input[type=text] {
-  width: 22rem;
-  position: absolute;
-  border: 0.5px solid #7acc98;
-}
-
-.header .header_center input[type=text]:focus {
-  outline: none;
-}
-
-.header .header_center input[type=submit] {
-  width: 5rem;
-  position: absolute;
-  background: #7acc98;
-  border: none;
-  cursor: pointer;
-  right: 0;
-}
-
 .header .header_right {
   font-size: 2rem;
   padding-top: calc((8rem - 2.533rem)/2);
@@ -76,9 +45,8 @@ article .top_course_info {
 article .top_course_info .courseMainImg {
   width: 40rem;
   height: 25rem;
-  background: url("https://via.placeholder.com/300x300") no-repeat center;
-  background-size: cover;
   margin: calc((30rem - 25rem)/2) 5rem;
+  background-size: cover;
 }
 
 article .top_course_info .courseTitle {
@@ -90,8 +58,8 @@ article .top_course_info .courseTitle {
 
 article .top_course_info .courseTitle h1 {
   width: 100%;
-  height: 15rem;
-  font-size: 5rem;
+  height: 16rem;
+  font-size: 3rem;
 }
 
 article .top_course_info .courseTitle p {
@@ -105,15 +73,15 @@ article .course_info {
 article .course_info .article_left {
   width: 75rem;
   margin-top: 3rem;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   line-height: 7rem;
 }
 
 article .course_info .article_left .course_infoDetailed {
-  font-size: 3rem;
+  font-size: 1.5rem;
 }
 
-article .course_info .article_left .course_infoDetailed p:last-child {
+article .course_info .article_left .course_infoDetailed p {
   font-size: 2rem;
 }
 

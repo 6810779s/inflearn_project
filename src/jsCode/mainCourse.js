@@ -1,9 +1,9 @@
 const mainCourse = function (position, user_name, lists) {
   let html = "";
   if (position === "강사") {
-    html = `<button class="create show">강의 올리기</button>`;
+    html = `<a href="/create_course" class="create show">강의 올리기</a>`;
   } else {
-    html = `<button class="create">강의 올리기</button>`;
+    html = ``;
   }
   return `
   <!DOCTYPE html>
@@ -19,7 +19,7 @@ const mainCourse = function (position, user_name, lists) {
   <section>
     <header class="header">
       <div class="header_left">
-        <img id="top_logo" src="/img/main_home/inflearnLogo.png" alt="logo">
+        <a href="/mainCourse"><img id="top_logo" src="/img/main_home/inflearnLogo.png" alt="logo"></a>
       </div>
       <div class="header_center">
         <form action="/search" method="POST">
