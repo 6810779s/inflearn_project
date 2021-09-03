@@ -33,32 +33,46 @@ app.use(cors_1.default());
 app.use("/api/courses", courses_1.router);
 app.use("/api/search", search_1.router);
 
-/* 추가 코드: 서버시작 시 열리는 페이지 */
-
+/* 서버시작 시 열리는 페이지 */
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/html/index.html");
+  console.log(req.query.id);
+  if (req.query.id === undefined) {
+    console.log("I'm null");
+    res.sendFile(__dirname + "/html/index.html");
+  } else {
+    const id = req.query.id;
+    res.send(`${id}`);
+  }
 });
+
+/* 강의를 볼 수 있는 메인 페이지 */
 app.post("/mainCourse", (req, res) => {
+  const courses = courseData.courses;
   const position = req.body.position;
   const user_name = req.body.name;
-  const courses = courseData.courses;
+  const NUM = 30;
+  let price = "";
+  let title = "";
   let lists = "";
+
+  // console.log(req.originalUrl);
 
   //글자수 25이상이면 ...으로 표시
   //가격 부분 1000단위 콤마 표시
   courses.forEach((course) => {
-    const NUM = 30;
-    let price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    let title = course.title;
+    price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    title = course.title;
     if (title.length > NUM) {
       title = title.slice(0, NUM) + "...";
     }
     lists += `
     <li id=${course.id}>
-      <div class="coverImg" style="background: url(${course.coverImageUrl}) no-repeat center; background-size: cover;"></div>
-      <p class="title">${title}</p>
-      <p class="instructorName">${course.instructorName}</p>
-      <p class="price">₩${price}</p>
+      <a href="/?id=${course.id}">
+        <div class="coverImg" style="background: url(${course.coverImageUrl}) no-repeat center; background-size: cover;"></div>
+        <p class="title">${title}</p>
+        <p class="instructorName">${course.instructorName}</p>
+        <p class="price">₩${price}</p>
+      </a>
   </li>
     `;
   });
@@ -66,7 +80,11 @@ app.post("/mainCourse", (req, res) => {
   res.send(mainCourse(position, user_name, lists));
 });
 
-//mainCourse까지 만들음.
+/* 강의 상세 페이지 */
+// app.get("/courseInfo?"){
+
+// }
+
 app.use((req, res) => {
   res.send(`<h1>Sorry, page not found :(</h1>`);
 });

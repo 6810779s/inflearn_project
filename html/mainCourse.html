@@ -20,68 +20,46 @@
         </form>
       </div>
       <div class="header_right">
-        <span>은희님, 안녕하세요</span>
+        <span>${user_name}님, 안녕하세요</span>
       </div>
     </header>
     <div class="article">
       <ul class="course">
-        <li>
-          <div class="coverImg"></div>
-          <p class="title">title</p>
-          <p class="instructorName">instructorName</p>
-          <p class="price">₩price</p>
-        </li>
-        <li>
-          <div class="coverImg"></div>
-          <p class="title">title</p>
-          <p class="instructorName">instructorName</p>
-          <p class="price">₩price</p>
-        </li>
-        <li>
-          <div class="coverImg"></div>
-          <p class="title">title</p>
-          <p class="instructorName">instructorName</p>
-          <p class="price">₩price</p>
-        </li>
-        <li>
-          <div class="coverImg"></div>
-          <p class="title">title</p>
-          <p class="instructorName">instructorName</p>
-          <p class="price">₩price</p>
-        </li>
-        <li>
-          <div class="coverImg"></div>
-          <p class="title">title</p>
-          <p class="instructorName">instructorName</p>
-          <p class="price">₩price</p>
-        </li>
-        <li>
-          <div class="coverImg"></div>
-          <p class="title">title</p>
-          <p class="instructorName">instructorName</p>
-          <p class="price">₩price</p>
-        </li>
-        <li>
-          <div class="coverImg"></div>
-          <p class="title">title</p>
-          <p class="instructorName">instructorName</p>
-          <p class="price">₩price</p>
-        </li>
+        ${lists}
       </ul>
       <div class="article_right">
         <div class="user_profile">
-          <p>🍀학생 정보</p>
-          <p>이름: 은희</p>
-          <p>직급: 학생</p>
+          <p>🍀${position} 정보</p>
+          <p>이름: ${user_name}</p>
+          <p>직급: ${position}</p>
         </div>
         <div class="control">
-          <button class="create show">강의 올리기</button>
-          <a href="#top_logo"><p>&#9650;top</p></a>
+          ${html}
+          <a href="#top_logo">&#9650;top</a>
         </div>  
       </div>
+      <div class="loading">loading...</div>
     </div>
   </section>
-  
-  
+  <script>
+  let timer;
+  window.addEventListener("scroll", ()=>{
+    const article = document.querySelector(".article");
+    let curHeight = window.scrollY;
+    let documentHeight = document.body.scrollHeight;
+    let articleHeight = article.clientHeight
+    if (curHeight > documentHeight-900){
+      if(!timer){
+        timer = setTimeout(function() {
+          timer = null;
+          article.style.height = (articleHeight/10) + (45*4) + "rem";
+          console.log(articleHeight);
+        }, 500);
+          console.log("loading...");
+      }
+    }
+    
+  });
+  </script>
 </body>
 </html>

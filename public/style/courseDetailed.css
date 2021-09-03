@@ -1,0 +1,160 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 10px;
+}
+
+section {
+  width: 120rem;
+  margin: auto;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.header {
+  height: 8rem;
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .header_center {
+  width: 22rem;
+  padding-top: calc((8rem - 3rem)/2);
+  position: relative;
+}
+
+.header .header_center input {
+  font-size: 1.5rem;
+  height: 3rem;
+  margin: 0;
+}
+
+.header .header_center input[type=text] {
+  width: 22rem;
+  position: absolute;
+  border: 0.5px solid #7acc98;
+}
+
+.header .header_center input[type=text]:focus {
+  outline: none;
+}
+
+.header .header_center input[type=submit] {
+  width: 5rem;
+  position: absolute;
+  background: #7acc98;
+  border: none;
+  cursor: pointer;
+  right: 0;
+}
+
+.header .header_right {
+  font-size: 2rem;
+  padding-top: calc((8rem - 2.533rem)/2);
+}
+
+article {
+  width: 120rem;
+}
+
+article .top_course_info {
+  width: 100%;
+  height: 30rem;
+  background: #0a2232;
+  display: flex;
+}
+
+article .top_course_info .courseMainImg {
+  width: 40rem;
+  height: 25rem;
+  background: url("https://via.placeholder.com/300x300") no-repeat center;
+  background-size: cover;
+  margin: calc((30rem - 25rem)/2) 5rem;
+}
+
+article .top_course_info .courseTitle {
+  width: 70rem;
+  height: 25rem;
+  margin: calc((30rem - 25rem)/2) 5rem;
+  color: white;
+}
+
+article .top_course_info .courseTitle h1 {
+  width: 100%;
+  height: 15rem;
+  font-size: 5rem;
+}
+
+article .top_course_info .courseTitle p {
+  font-size: 2rem;
+}
+
+article .course_info {
+  position: relative;
+}
+
+article .course_info .article_left {
+  width: 75rem;
+  margin-top: 3rem;
+  font-size: 2.5rem;
+  line-height: 7rem;
+}
+
+article .course_info .article_left .course_infoDetailed {
+  font-size: 3rem;
+}
+
+article .course_info .article_left .course_infoDetailed p:last-child {
+  font-size: 2rem;
+}
+
+article .course_info .article_right {
+  width: 40rem;
+  position: fixed;
+  top: calc(8rem + 5rem + 30rem + 3rem);
+  margin-left: calc(120rem - 40rem);
+  background: #f8f9fa;
+  border: 1px solid #f8f9fa;
+  border-radius: 2rem;
+}
+
+article .course_info .article_right .user_profile {
+  padding: 3rem;
+  height: 15rem;
+  font-size: 2rem;
+  background: white;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+article .course_info .article_right .user_profile p {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+article .course_info .article_right .user_profile a {
+  background: #7acc98;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+article .course_info .article_right .info {
+  width: 40rem;
+  height: 100%;
+  background: #f8f9fa;
+  padding: 3rem;
+  border-top: 1px solid #f8f9fa;
+  border-radius: 2rem;
+  font-size: 2rem;
+  line-height: 4rem;
+}
+/*# sourceMappingURL=courseDetailed.css.map */

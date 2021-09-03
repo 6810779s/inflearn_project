@@ -26,6 +26,7 @@ section{
 
 .header{
   height: 8rem;
+  margin-bottom: 5rem;
   display: flex;
   justify-content:space-between;
   .header_center{
@@ -64,9 +65,25 @@ section{
 
 .article{
   width: 120rem;
-  padding-top: 5rem;
-  height: 100%;
+  height: calc(45rem *4);
   position: relative;
+  overflow: hidden;
+  .loading{
+    display: none;
+    width: 70rem;
+    height: 10rem;
+    position:absolute;
+    bottom: 0;
+    font-size: 3rem;
+    line-height: 10rem;
+    text-align: center;
+    vertical-align: middle;
+    background: rgb(233, 230, 230);
+    
+    &.showLoading{
+      display: block;
+    }
+  }
   
   .course{
     width: 75rem;

@@ -48,9 +48,37 @@ const mainCourse = function (position, user_name, lists) {
       </div>
     </div>
   </section>
+  <script>
+  let timer;
+  const loading = document.createElement("div");
+  const article = document.querySelector(".article");
+  loading.classList.add("loading");
+  loading.innerText = "loading..."
+  article.appendChild(loading);
+
+  window.addEventListener("scroll", ()=>{
+    loading.classList.remove("showLoading");
+    let curHeight = window.scrollY;
+    let documentHeight = document.body.scrollHeight;
+    let articleHeight = article.clientHeight
+    if (curHeight > documentHeight-900){
+      if(!timer){
+        timer = setTimeout(function() {
+          timer = null;
+          article.style.height = (articleHeight/10) + (45*4) + "rem";
+          console.log(articleHeight);
+        }, 300);
+          loading.classList.add("showLoading");
+          
+          console.log("loading...");
+      }
+    }
+  });
+  </script>
 </body>
 </html>
   `;
 };
+//쓰로틀링을 이용한 무한 스크롤 구현.
 
 module.exports = mainCourse;
