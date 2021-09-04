@@ -46,7 +46,6 @@ const queryString_1 = require("../util/queryString");
 /* 받아올 데이터들 */
 const courseData = require("../data/courses");
 const courseSearch = require("../jsCode/courseSearch");
-let info = require("./courses");
 const router = express_1.default.Router();
 exports.router = router;
 
@@ -62,6 +61,7 @@ router.post("/courses/:userName/:position", (req, res) => {
 
   position_router = req.params.position;
   name_router = req.params.userName;
+
   const search_trim = search.replace(/ /gi, "");
   res.redirect(302, `/api/search/courses?keyword=${search_trim}`);
 });
@@ -102,7 +102,7 @@ router.get("/courses", (req, res) =>
             <div class="coverImg" style="background: url(${courseData.getTemporaryImageURL()}) no-repeat center; background-size: cover;"></div>
             <div class="info">
               <h1 class="title">${result.title}</h1>
-              <p class="name">₩${result.instructorName}</p>
+              <p class="name">${result.instructorName}</p>
             </div>
             </a>
           </li>

@@ -225,8 +225,10 @@ article .searchingLists li .info {
   }
 }
 
-article .searchingLists li .info .title {
-  width: 25rem;
+@media (max-width: 767px) {
+  article .searchingLists li .info .title {
+    width: 25rem;
+  }
 }
 
 article .searchingLists li .info h1 {

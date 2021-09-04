@@ -17,11 +17,8 @@ window.addEventListener("scroll", () => {
       timer_scroll = setTimeout(function () {
         timer_scroll = null;
         article.style.height = articleHeight / 10 + 45 * 4 + "rem";
-        console.log(articleHeight);
       }, 300);
       loading.classList.add("showLoading");
-
-      console.log("loading...");
     }
   }
 });

@@ -27,7 +27,7 @@ function filterSearching() {
 
     j++;
   }
-  console.log(courseLists);
+  
   courseLists.map((course) => {
     let li = document.createElement("li");
     let a = document.createElement("a");
