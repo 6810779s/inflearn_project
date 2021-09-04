@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/style/index.css">
-  <!-- <link rel="stylesheet" type="text/css" href="./public/style/index.css"> -->
   <title>Inflearn</title>
 </head>
 <body>
@@ -16,7 +15,7 @@
         <img src="/img/main_home/inflearnLogo.png" alt="logo">
       </header>
       <article class="article">
-        <form action="/mainCourse" method="POST">
+        <form action="/api/courses/" method="POST">
           <div class="putName">
             <label for="name">이름</label>
             <input type="text" name="name" placeholder="이름을 적어주세요" value="" required>

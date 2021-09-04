@@ -9,9 +9,7 @@ const express_1 = __importDefault(require("express"));
 const http_1 = __importDefault(require("http"));
 const path_1 = __importDefault(require("path"));
 const cors_1 = __importDefault(require("cors"));
-const fs = require("fs");
 const bodyParser = __importDefault(require("body-parser")); //add
-// const { ppid } = require("process");
 const DIContainer_1 = __importDefault(require("./DIContainer"));
 const CoursesRepository_1 = __importDefault(
   require("./src/repository/CoursesRepository")
@@ -33,6 +31,7 @@ app.use(express_1.default.static(path_1.default.join(__dirname, "public"))); //m
 app.use(bodyParser.default.urlencoded({ extended: true })); // to support URL-encoded bodies
 app.use(bodyParser.default.json()); // to support JSON-encoded bodies
 app.use(cors_1.default());
+
 app.use("/api/courses", courses_1.router);
 app.use("/api/search", search_1.router);
 
@@ -60,86 +59,25 @@ app.get("/", (req, res) => {
   }
 });
 
-//직접 입력하여 들어왔을 경우.
-app.get("/mainCourse", (req, res) => {
-  const courses = courseData.courses;
-  const NUM = 30;
-  let price = "";
-  let title = "";
-  let lists = "";
-
-  // console.log(req.originalUrl);
-
-  //글자수 25이상이면 ...으로 표시
-  //가격 부분 1000단위 콤마 표시
-  courses.forEach((course) => {
-    price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    title = course.title;
-    if (title.length > NUM) {
-      title = title.slice(0, NUM) + "...";
-    }
-    lists += `
-    <li id=${course.id}>
-      <a href="/?id=${course.id}">
-        <div class="coverImg" style="background: url(${course.coverImageUrl}) no-repeat center; background-size: cover;"></div>
-        <p class="title">${title}</p>
-        <p class="instructorName">${course.instructorName}</p>
-        <p class="price">₩${price}</p>
-      </a>
-  </li>
-    `;
-  });
-  res.send(mainCourse(position, user_name, lists));
-});
-
 app.get("/create_course", (req, res) => {
-  res.send(createCourse());
-});
-
-/* 강의를 볼 수 있는 메인 페이지 */
-app.post("/mainCourse", (req, res) => {
-  position = req.body.position;
-  user_name = req.body.name;
-  const courses = courseData.courses;
-  const NUM = 30;
-  let price = "";
-  let title = "";
-  let lists = "";
-
-  // console.log(req.originalUrl);
-
-  //글자수 25이상이면 ...으로 표시
-  //가격 부분 1000단위 콤마 표시
-  courses.forEach((course) => {
-    price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    title = course.title;
-    if (title.length > NUM) {
-      title = title.slice(0, NUM) + "...";
-    }
-    lists += `
-    <li id=${course.id}>
-      <a href="/?id=${course.id}">
-        <div class="coverImg" style="background: url(${course.coverImageUrl}) no-repeat center;"></div>
-        <p class="title">${title}</p>
-        <p class="instructorName">${course.instructorName}</p>
-        <p class="price">₩${price}</p>
-      </a>
-  </li>
-    `;
-  });
-  res.send(mainCourse(position, user_name, lists));
-  // res.redirect(307, "/mainCourse");
+  res.send(createCourse(user_name));
 });
 
 app.post("/create", (req, res) => {
-  courseData.courses.push({
-    id: 401,
-    title: "Oracle SQL Database 11g PL/SQL Developer",
-    instructorName: "지식공유자400",
-    coverImageUrl: "https://via.placeholder.com/400x700",
-    price: 198000,
+  console.log(res.params);
+  const course_title = req.body.title;
+  const course_price = req.body.price;
+  const course_id = courseData.courses.length + 1;
+
+  courseData.courses.reverse().push({
+    id: course_id,
+    title: course_title,
+    instructorName: user_name,
+    coverImageUrl: courseData.getTemporaryImageURL(),
+    price: course_price,
   });
-  res.send(courseData.courses);
+  courseData.courses.reverse();
+  res.redirect(302, "/mainCourse");
 });
 
 app.use((req, res) => {

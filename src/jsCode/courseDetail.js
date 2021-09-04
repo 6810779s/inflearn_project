@@ -19,7 +19,7 @@ const courseDetail = function (
   <section>
     <header class="header">
       <div class="header_left">
-        <a href="/mainCourse"><img id="top_logo" src="/img/main_home/inflearnLogo.png" alt="logo"></a>
+        <a href="/api/courses"><img id="top_logo" src="/img/main_home/inflearnLogo.png" alt="logo"></a>
       </div>
       <div class="header_right">
         <span>${user_name}</span>

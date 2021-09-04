@@ -1,4 +1,5 @@
 "use strict";
+
 var __awaiter =
   (this && this.__awaiter) ||
   function (thisArg, _arguments, P, generator) {
@@ -41,13 +42,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = __importDefault(require("express"));
 const queryString_1 = require("../util/queryString");
-const router = express_1.default.Router();
+const courseData = require("../data/courses");
+const mainCourse = require("../jsCode/mainCourse");
+const courseDetail = require("../jsCode/courseDetail");
+const router = express_1.default.Router({ mergeParams: true });
+let position_router = "방문자";
+let name_router = "학생";
+
 exports.router = router;
 function doIShoot500() {
   return Math.random() <= 0.5; // 50%
 }
+
 router.get("/", (req, res) =>
   __awaiter(void 0, void 0, void 0, function* () {
+    const coursesDataLsit = courseData.courses;
+    const NUM = 30;
+    let price = "";
+    let title = "";
+    let lists = "";
     var _a;
     const {
       query: {
@@ -81,12 +94,30 @@ router.get("/", (req, res) =>
       console.error("GET /courses error 발생!", error);
     }
     if (courses) {
-      res.json({
-        ok: true,
-        data: {
-          courses,
-        },
+      // res.json({
+      //   ok: true,
+      //   data: {
+      //     courses,
+      //   },
+      // });
+      coursesDataLsit.forEach((course) => {
+        price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        title = course.title;
+        if (title.length > NUM) {
+          title = title.slice(0, NUM) + "...";
+        }
+        lists += `
+        <li id=${course.id}>
+          <a href="/?id=${course.id}">
+            <div class="coverImg" style="background: url(${course.coverImageUrl}) no-repeat center; background-size: cover;"></div>
+            <p class="title">${title}</p>
+            <p class="instructorName">${course.instructorName}</p>
+            <p class="price">₩${price}</p>
+          </a>
+      </li>
+        `;
       });
+      res.send(mainCourse(position_router, name_router, lists));
     } else {
       if (doIShoot500()) {
         res.sendStatus(500);
@@ -101,6 +132,46 @@ router.get("/", (req, res) =>
     }
   })
 );
+
+/* 강의를 볼 수 있는 메인 페이지 */
+router.post("/", (req, res) => {
+  const {
+    body: { position, name },
+  } = req;
+  const courses = courseData.courses;
+  const NUM = 30;
+  let price = "";
+  let title = "";
+  let lists = "";
+
+  position_router = position;
+  name_router = name;
+
+  // console.log(req.originalUrl);
+
+  //글자수 25이상이면 ...으로 표시
+  //가격 부분 1000단위 콤마 표시
+  courses.forEach((course) => {
+    price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    title = course.title;
+    if (title.length > NUM) {
+      title = title.slice(0, NUM) + "...";
+    }
+    lists += `
+    <li id=${course.id}>
+      <a href="/api/courses/${course.id}">
+        <div class="coverImg" style="background: url(${course.coverImageUrl}) no-repeat center;"></div>
+        <p class="title">${title}</p>
+        <p class="instructorName">${course.instructorName}</p>
+        <p class="price">₩${price}</p>
+      </a>
+  </li>
+    `;
+  });
+
+  res.send(mainCourse(position_router, name_router, lists));
+  // res.redirect(307, "/mainCourse");
+});
 
 router.get("/:courseId", (req, res) =>
   __awaiter(void 0, void 0, void 0, function* () {
@@ -118,12 +189,22 @@ router.get("/:courseId", (req, res) =>
       console.error("GET /courses/:courseId error 발생!", error);
     }
     if (course) {
-      res.json({
-        ok: true,
-        data: {
-          course,
-        },
-      });
+      // res.json({
+      //   ok: true,
+      //   data: {
+      //     course,
+      //   },
+      // });
+      let price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      res.send(
+        courseDetail(
+          name_router,
+          course.title,
+          course.instructorName,
+          price,
+          course.coverImageUrl
+        )
+      );
     } else {
       res.json({
         ok: false,
@@ -135,7 +216,8 @@ router.get("/:courseId", (req, res) =>
   })
 );
 
-router.post("/", (req, res) =>
+//router.post("/",와 router.get이 있음
+router.post("/create", (req, res) =>
   __awaiter(void 0, void 0, void 0, function* () {
     var _c;
     const {

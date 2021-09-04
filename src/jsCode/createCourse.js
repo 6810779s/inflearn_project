@@ -1,4 +1,4 @@
-const createCourse = function () {
+const createCourse = function (user_name) {
   return `
   <!DOCTYPE html>
 <html lang="en">
@@ -16,11 +16,11 @@ const createCourse = function () {
         <img src="/img/main_home/inflearnLogo.png" alt="logo">
       </header>
       <article>
-        <form action="/create" method="POST">
+        <form action="/api/courses/${id}" method="POST">
           <ul>
             <li>
               <label for="instructorName">강사 이름</label>
-              <input type="text" name="instructorName" value="instructorName" readonly>
+              <input type="text" name="instructorName" value=${user_name} readonly>
             </li>
             <li>
               <label for="title">강의 제목</label>
