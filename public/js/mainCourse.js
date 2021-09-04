@@ -72,7 +72,6 @@ input_search.addEventListener("keyup", (e) => {
   }
   timer_search = setTimeout(function () {
     let ul = document.querySelector(".header_center ul");
-    ul.onmouseout = displayUl;
     if (ul) {
       header_center.removeChild(ul);
     }
@@ -83,17 +82,15 @@ input_search.addEventListener("keyup", (e) => {
 });
 
 //포커싱 아웃일 경우
-let ulTag = false;
+
 input_search.addEventListener("blur", (e) => {
-  if (ulTag) {
-    console.log("dd");
-    input_search.removeChild("ul");
+  let ul = document.querySelector(".header_center ul");
+  if (ul) {
+    setTimeout(() => {
+      header_center.removeChild(ul);
+    }, 130);
   }
 });
-
-function displayUl() {
-  ulTag = true;
-}
 
 //포커싱 했을 경우
 input_search.addEventListener("focus", (e) => {

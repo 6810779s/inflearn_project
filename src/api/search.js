@@ -45,6 +45,7 @@ const queryString_1 = require("../util/queryString");
 const router = express_1.default.Router();
 exports.router = router;
 
+//검색 정보 받아오기
 router.post("/courses", (req, res) => {
   const {
     body: { search },
@@ -52,6 +53,7 @@ router.post("/courses", (req, res) => {
   const search_trim = search.replace(/ /gi, "");
   res.redirect(302, `/api/search/courses?keyword=${search_trim}`);
 });
+
 /* localhost:3000/api/search/courses */
 //keyword: 검색 결과
 //max: 검색 결과 카운트의 max값

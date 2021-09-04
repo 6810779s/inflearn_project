@@ -1,0 +1,108 @@
+@import '../variables/variables.scss';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body{
+  font-size: 10px;
+}
+
+section{
+  width: 120rem;
+  margin: auto;
+}
+
+.header{
+  height: 8rem;
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content:space-between;
+  .header_center{
+    width: 40rem;
+    padding-top: calc((8rem - 3rem)/2);
+    position: relative;
+    input{
+      font-size: 1.5rem;
+      height: 3rem;
+      margin: 0;
+    }
+    input[type=text]{
+      width: 40rem;
+      position:absolute;
+      border: 0.5px solid $mainColor;
+      &:focus{
+        outline: none;
+      }
+
+    }
+    input[type=submit]{
+      width: 5rem;
+      position:absolute;
+      background: $mainColor;
+      border: none;
+      cursor: pointer;
+      right: 0;
+    }
+    ul{
+      position: absolute;
+      top: 6rem;
+      width: 40rem;
+      line-height: 3.5rem;
+      z-index: 10;
+      background: white;
+      li{
+        height: 3.5rem;
+        font-size: 2rem;
+        cursor: pointer;
+        overflow: hidden;
+        &:hover{
+          background: rgb(224, 219, 219);
+        }
+      }
+      
+    }
+  }
+  .header_right{
+    font-size: 2rem;
+    padding-top: calc((8rem - 2.533rem)/2);
+  }
+}
+
+article{
+  width: 100%;
+  height: 95rem;
+  overflow-y: scroll;
+  .searchingLists{
+    li{
+      width: 100%;
+      height: 19rem;
+      border: 1px solid rgb(238, 234, 234);
+      display: flex;
+      flex-direction: row;
+      padding:calc((19rem - 15rem)/2);
+      div:first-child{
+        width: 25rem;
+        height: 15rem;
+        background: rgb(180, 122, 122);
+
+      }
+      .info{
+        margin-left: 5rem;
+        h1{
+          height: 11rem;
+          font-size: 5rem;
+        }
+        p{
+          color: gray;
+          font-size: 3rem;
+        }
+      }
+    }
+
+  }
+  
+}
