@@ -42,6 +42,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = __importDefault(require("express"));
 const queryString_1 = require("../util/queryString");
+
+/* 받아올 데이터들 */
+const courseData = require("../data/courses");
+const courseSearch = require("../jsCode/courseSearch");
+
 const router = express_1.default.Router();
 exports.router = router;
 
@@ -81,12 +86,24 @@ router.get("/courses", (req, res) =>
       console.error("/search/course error 발생!", error);
     }
     if (searchResult) {
-      res.json({
-        ok: true,
-        data: {
-          results: searchResult,
-        },
+      console.log(searchResult);
+      let lists = "";
+
+      searchResult.map((result) => {
+        lists += `
+          <li id=${result.id}>
+            <a href="/api/courses/${result.id}">
+            <div class="coverImg" style="background: url(${courseData.getTemporaryImageURL()}) no-repeat center; background-size: cover;"></div>
+            <div class="info">
+              <h1 class="title">${result.title}</p>
+              <p class="name">₩${result.instructorName}</p>
+            </div>
+            
+            </a>
+          </li>
+        `;
       });
+      res.send(courseSearch("방문자", lists));
     } else {
       const doIShoot500 = Math.random() <= 0.5;
       if (doIShoot500) {

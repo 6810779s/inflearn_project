@@ -9,6 +9,10 @@ body {
   font-size: 10px;
 }
 
+a {
+  color: black;
+}
+
 section {
   width: 120rem;
   margin: auto;
@@ -79,7 +83,7 @@ section {
 
 article {
   width: 100%;
-  height: 95rem;
+  height: 70rem;
   overflow-y: scroll;
 }
 
@@ -87,8 +91,6 @@ article .searchingLists li {
   width: 100%;
   height: 19rem;
   border: 1px solid #eeeaea;
-  display: flex;
-  flex-direction: row;
   padding: calc((19rem - 15rem)/2);
 }
 
@@ -96,19 +98,24 @@ article .searchingLists li div:first-child {
   width: 25rem;
   height: 15rem;
   background: #b47a7a;
+  float: left;
 }
 
 article .searchingLists li .info {
-  margin-left: 5rem;
+  height: 15rem;
+  width: 80rem;
+  margin-left: 30rem;
 }
 
 article .searchingLists li .info h1 {
   height: 11rem;
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
 article .searchingLists li .info p {
   color: gray;
-  font-size: 3rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  vertical-align: bottom;
 }
 /*# sourceMappingURL=courseSearch.css.map */
