@@ -46,15 +46,22 @@ const queryString_1 = require("../util/queryString");
 /* 받아올 데이터들 */
 const courseData = require("../data/courses");
 const courseSearch = require("../jsCode/courseSearch");
-
+let info = require("./courses");
 const router = express_1.default.Router();
 exports.router = router;
 
+/* 전역에서 사용할 사용자 포지션과 이름 */
+let position_router = "학생";
+let name_router = "방문자";
+
 //검색 정보 받아오기
-router.post("/courses", (req, res) => {
+router.post("/courses/:userName/:position", (req, res) => {
   const {
     body: { search },
   } = req;
+
+  position_router = req.params.position;
+  name_router = req.params.userName;
   const search_trim = search.replace(/ /gi, "");
   res.redirect(302, `/api/search/courses?keyword=${search_trim}`);
 });
@@ -86,7 +93,6 @@ router.get("/courses", (req, res) =>
       console.error("/search/course error 발생!", error);
     }
     if (searchResult) {
-      console.log(searchResult);
       let lists = "";
 
       searchResult.map((result) => {
@@ -103,7 +109,7 @@ router.get("/courses", (req, res) =>
           </li>
         `;
       });
-      res.send(courseSearch("방문자", lists));
+      res.send(courseSearch(name_router, lists));
     } else {
       const doIShoot500 = Math.random() <= 0.5;
       if (doIShoot500) {

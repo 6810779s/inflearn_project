@@ -240,3 +240,5 @@ router.post("/create/courses", (req, res) =>
     }
   })
 );
+
+exports.module = { position_router, name_router };

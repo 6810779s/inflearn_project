@@ -24,7 +24,7 @@ const mainCourse = function (position, user_name, lists) {
         <a href="/api/courses"><img id="top_logo" src="/img/main_home/inflearnLogo.png" alt="logo"></a>
       </div>
       <div class="header_center">
-        <form action="/api/search/courses" method="POST">
+        <form action="/api/search/courses/${user_name}/${position}" method="POST">
           <input autocomplete="off" type="text" name="search" maxlength="30" value="">
           <input type="submit" value="검색">
         </form>
@@ -52,9 +52,8 @@ const mainCourse = function (position, user_name, lists) {
   </section>
   <script>
     let courseObject = ${courseList};
-    console.log(courseObject);
+    let name_router = ${user_name};
   </script>
-
   <script src="/js/mainCourse.js"></script>
 </body>
 </html>

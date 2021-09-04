@@ -1,3 +1,6 @@
+const courseData = require("../data/courses");
+let courseList = JSON.stringify(courseData.courses);
+
 const courseSearch = function (user_name, lists) {
   return `
   <!DOCTYPE html>
@@ -31,7 +34,10 @@ const courseSearch = function (user_name, lists) {
       </ul>
     </article>
   </section>
-
+  <script>
+    let courseObject = ${courseList};
+  </script>
+  <script src="/js/courseSearch.js"></script>
 </body>
 </html>
   `;

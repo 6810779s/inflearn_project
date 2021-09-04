@@ -1,31 +1,3 @@
-let timer_scroll;
-const loading = document.createElement("div");
-const article = document.querySelector(".article");
-loading.classList.add("loading");
-loading.innerText = "loading...";
-article.appendChild(loading);
-
-/* 무한스크롤 이벤트  */
-//스로틀링 사용
-window.addEventListener("scroll", () => {
-  loading.classList.remove("showLoading");
-  let curHeight = window.scrollY;
-  let documentHeight = document.body.scrollHeight;
-  let articleHeight = article.clientHeight;
-  if (curHeight > documentHeight - 900) {
-    if (!timer_scroll) {
-      timer_scroll = setTimeout(function () {
-        timer_scroll = null;
-        article.style.height = articleHeight / 10 + 45 * 4 + "rem";
-        console.log(articleHeight);
-      }, 300);
-      loading.classList.add("showLoading");
-
-      console.log("loading...");
-    }
-  }
-});
-
 /* 검색결과 실시간으로 나오기 이벤트*/
 //디바운싱 사용
 const input_search = document.querySelector("input[name='search']");
