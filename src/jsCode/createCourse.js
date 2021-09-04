@@ -16,7 +16,7 @@ const createCourse = function (user_name) {
         <img src="/img/main_home/inflearnLogo.png" alt="logo">
       </header>
       <article>
-        <form action="/api/courses/${id}" method="POST">
+        <form action="/api/courses/create/courses" method="POST">
           <ul>
             <li>
               <label for="instructorName">강사 이름</label>

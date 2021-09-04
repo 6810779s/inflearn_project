@@ -49,7 +49,7 @@ const courseDetail = function (
         <div class="article_right">
           <div class="user_profile">
             <p>총 ${price}원</p>
-            <a href="/mainCourse">홈으로</a>
+            <a href="/api/courses">홈으로</a>
           </div>
           <div class="info">
             <ul>

@@ -1,9 +1,7 @@
 const mainCourse = function (position, user_name, lists) {
   let html = "";
   if (position === "강사") {
-    html = `<a href="/create_course" class="create show">강의 올리기</a>`;
-  } else {
-    html = ``;
+    html = `<a href="/api/courses/create/courses" class="create show">강의 올리기</a>`;
   }
   return `
   <!DOCTYPE html>

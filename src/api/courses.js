@@ -45,6 +45,7 @@ const queryString_1 = require("../util/queryString");
 const courseData = require("../data/courses");
 const mainCourse = require("../jsCode/mainCourse");
 const courseDetail = require("../jsCode/courseDetail");
+const createCourse = require("../jsCode/createCourse");
 const router = express_1.default.Router({ mergeParams: true });
 let position_router = "방문자";
 let name_router = "학생";
@@ -57,7 +58,7 @@ function doIShoot500() {
 router.get("/", (req, res) =>
   __awaiter(void 0, void 0, void 0, function* () {
     const coursesDataLsit = courseData.courses;
-    const NUM = 30;
+    const NUM = 25;
     let price = "";
     let title = "";
     let lists = "";
@@ -100,6 +101,7 @@ router.get("/", (req, res) =>
       //     courses,
       //   },
       // });
+      console.log(courses.data);
       coursesDataLsit.forEach((course) => {
         price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         title = course.title;
@@ -108,7 +110,7 @@ router.get("/", (req, res) =>
         }
         lists += `
         <li id=${course.id}>
-          <a href="/?id=${course.id}">
+          <a href="/api/courses/${course.id}">
             <div class="coverImg" style="background: url(${course.coverImageUrl}) no-repeat center; background-size: cover;"></div>
             <p class="title">${title}</p>
             <p class="instructorName">${course.instructorName}</p>
@@ -139,7 +141,7 @@ router.post("/", (req, res) => {
     body: { position, name },
   } = req;
   const courses = courseData.courses;
-  const NUM = 30;
+  const NUM = 25;
   let price = "";
   let title = "";
   let lists = "";
@@ -206,24 +208,29 @@ router.get("/:courseId", (req, res) =>
         )
       );
     } else {
-      res.json({
-        ok: false,
-        error: {
-          message: "강의 상세를 가져오는데 실패했습니다.",
-        },
-      });
+      // res.json({
+      //   ok: false,
+      //   error: {
+      //     message: "강의 상세를 가져오는데 실패했습니다.",
+      //   },
+      // });
+      res.send("오류 발생 :( 강의 상세를 가져오는데 실패했습니다..");
     }
   })
 );
 
-//router.post("/",와 router.get이 있음
-router.post("/create", (req, res) =>
+router.get("/create/courses", (req, res) => {
+  res.send(createCourse(name_router));
+});
+
+router.post("/create/courses", (req, res) =>
   __awaiter(void 0, void 0, void 0, function* () {
     var _c;
     const {
-      body: { title, price: _price },
+      body: { title, price: _price, instructorName: name_router },
     } = req;
     const price = Number(_price);
+    const instructorName = name_router;
     if (typeof title !== "string" || isNaN(price)) {
       res.json({
         ok: false,
@@ -238,17 +245,20 @@ router.post("/create", (req, res) =>
       createdCourseId = yield (_c = Container.get("CourseService")) === null ||
       _c === void 0
         ? void 0
-        : _c.createCourse({ title, price });
+        : _c.createCourse({ title, price, instructorName });
     } catch (error) {
       console.error("POST /courses error 발생!", error);
     }
     if (createdCourseId !== undefined) {
-      res.json({
-        ok: true,
-        data: {
-          createdCourseId,
-        },
+      courseData.courses.reverse().push({
+        id: createdCourseId,
+        title,
+        instructorName: name_router,
+        coverImageUrl: courseData.getTemporaryImageURL(),
+        price: price,
       });
+      courseData.courses.reverse();
+      res.redirect(302, `/api/courses/${createdCourseId}`);
     } else {
       if (doIShoot500()) {
         res.sendStatus(500);
