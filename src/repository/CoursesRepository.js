@@ -11,8 +11,10 @@ const courses_1 = require("../data/courses");
 //search
 function* searchGen(arr, keyword) {
   const reg = typeof keyword === "string" ? new RegExp(keyword) : keyword;
+  // .replace(/ /gi, "");
   for (const course of arr) {
-    if (reg.test(course.title)) {
+    if (reg.test(course.title.replace(/ /gi, ""))) {
+      //공백 제거하여 비교
       if (yield course) {
         break;
       }
@@ -52,6 +54,7 @@ class CoursesRepository {
     return this.forTest ? false : Math.random() <= 0.1; // 10% 확률
   }
   list({ page = 1, count = 20, lastContentId, search: _search }) {
+    // const search = _search !== undefined ? _search.trim() : "";
     const search = _search !== undefined ? _search.trim() : "";
     const courses =
       search.length > 0
@@ -75,6 +78,7 @@ class CoursesRepository {
       }, getDelayTime(this.forTest));
     });
   }
+
   getById(id) {
     return new Promise((resolve) => {
       const course =

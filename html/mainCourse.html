@@ -15,9 +15,14 @@
       </div>
       <div class="header_center">
         <form action="/search" method="POST">
-          <input type="text" name="search">
+          <input type="text" name="search" value="">
           <input type="submit" value="검색">
         </form>
+        <ul>
+          <li>알고리즘</li>
+          <li>NodeJs</li>
+          <li>하이</li>
+        </ul>
       </div>
       <div class="header_right">
         <span>${user_name}님, 안녕하세요</span>
@@ -60,6 +65,41 @@
     }
     
   });
+
+  let timer_search;
+  const input_search = document.querySelector("input[name='search']");
+  const li = [{id:1,"title":"알고리즘"},{id:2, "title":"알고"}];
+  function filterSearching(){
+    let i = 0;
+    let j = 0;
+    let courseLists = [];
+  //   while (i !== 5 || li.length===2) {
+      
+  //   // if (
+  //     Object.values(li[j]).map((value) => {
+  //       console.log(value);
+  //       // if (String(value).includes("알고")) {
+  //       //   courseLists.push(li[j]);
+  //       //   i++;
+  //       // }
+  //     })
+  //   // );
+  //   j++;
+  // }
+  }
+  input_search.addEventListener('keyup', (e)=> {
+  if (timer_search) {
+    clearTimeout(timer_search);
+  }
+  timer_search = setTimeout(function() {
+    if(input_search.value.length>=2){
+      filterSearching();
+    }
+
+  }, 200);
+});
+
+
   </script>
 </body>
 </html>

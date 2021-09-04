@@ -18,8 +18,6 @@ const CourseService_1 = __importDefault(require("./src/service/CourseService"));
 const courses_1 = require("./src/api/courses");
 const search_1 = require("./src/api/search");
 
-const createCourse = require("./src/jsCode/createCourse");
-const courseData = require("./src/data/courses");
 const app = express_1.default();
 const port = process.env.PORT || "3000";
 

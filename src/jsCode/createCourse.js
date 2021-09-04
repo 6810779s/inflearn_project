@@ -20,15 +20,15 @@ const createCourse = function (user_name) {
           <ul>
             <li>
               <label for="instructorName">강사 이름</label>
-              <input type="text" name="instructorName" value=${user_name} readonly>
+              <input autocomplete="off" type="text" name="instructorName" value=${user_name} maxlength='10' readonly>
             </li>
             <li>
               <label for="title">강의 제목</label>
-              <input type="text" name="title" maxlength='30' required>
+              <input autocomplete="off" type="text" name="title" maxlength='30' required>
             </li>
             <li>
               <label for="price">강의 가격</label>
-              <input type="number" name="price" required>
+              <input autocomplete="off" type="number" name="price" required>
             </li>
             <li>
               <input type="submit" value="완료">

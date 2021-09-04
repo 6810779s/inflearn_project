@@ -1,4 +1,8 @@
+const courseData = require("../data/courses");
+let courseList = JSON.stringify(courseData.courses);
+
 const mainCourse = function (position, user_name, lists) {
+  let courseList = JSON.stringify(courseData.courses);
   let html = "";
   if (position === "강사") {
     html = `<a href="/api/courses/create/courses" class="create show">강의 올리기</a>`;
@@ -20,8 +24,8 @@ const mainCourse = function (position, user_name, lists) {
         <a href="/api/courses"><img id="top_logo" src="/img/main_home/inflearnLogo.png" alt="logo"></a>
       </div>
       <div class="header_center">
-        <form action="/search" method="POST">
-          <input type="text" name="search">
+        <form action="/api/search/courses" method="POST">
+          <input autocomplete="off" type="text" name="search" maxlength="30" value="">
           <input type="submit" value="검색">
         </form>
       </div>
@@ -47,36 +51,17 @@ const mainCourse = function (position, user_name, lists) {
     </div>
   </section>
   <script>
-  let timer;
-  const loading = document.createElement("div");
-  const article = document.querySelector(".article");
-  loading.classList.add("loading");
-  loading.innerText = "loading..."
-  article.appendChild(loading);
-
-  window.addEventListener("scroll", ()=>{
-    loading.classList.remove("showLoading");
-    let curHeight = window.scrollY;
-    let documentHeight = document.body.scrollHeight;
-    let articleHeight = article.clientHeight
-    if (curHeight > documentHeight-900){
-      if(!timer){
-        timer = setTimeout(function() {
-          timer = null;
-          article.style.height = (articleHeight/10) + (45*4) + "rem";
-          console.log(articleHeight);
-        }, 300);
-          loading.classList.add("showLoading");
-          
-          console.log("loading...");
-      }
-    }
-  });
+    let courseObject = ${courseList};
+    console.log(courseObject);
   </script>
+
+  <script src="/js/mainCourse.js"></script>
 </body>
 </html>
   `;
 };
+
 //쓰로틀링을 이용한 무한 스크롤 구현.
+//디바운싱을 이용한 검색 기능 구현.
 
 module.exports = mainCourse;

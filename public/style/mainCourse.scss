@@ -30,7 +30,7 @@ section{
   display: flex;
   justify-content:space-between;
   .header_center{
-    width: 22rem;
+    width: 40rem;
     padding-top: calc((8rem - 3rem)/2);
     position: relative;
     input{
@@ -39,7 +39,7 @@ section{
       margin: 0;
     }
     input[type=text]{
-      width: 22rem;
+      width: 40rem;
       position:absolute;
       border: 0.5px solid $mainColor;
       &:focus{
@@ -54,6 +54,24 @@ section{
       border: none;
       cursor: pointer;
       right: 0;
+    }
+    ul{
+      position: absolute;
+      top: 6rem;
+      width: 40rem;
+      line-height: 3.5rem;
+      z-index: 10;
+      background: white;
+      li{
+        height: 3.5rem;
+        font-size: 2rem;
+        cursor: pointer;
+        overflow: hidden;
+        &:hover{
+          background: rgb(224, 219, 219);
+        }
+      }
+      
     }
   }
 

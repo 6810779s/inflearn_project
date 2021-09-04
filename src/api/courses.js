@@ -42,19 +42,37 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = __importDefault(require("express"));
 const queryString_1 = require("../util/queryString");
+
+/* 받아올 데이터들 */
 const courseData = require("../data/courses");
 const mainCourse = require("../jsCode/mainCourse");
 const courseDetail = require("../jsCode/courseDetail");
 const createCourse = require("../jsCode/createCourse");
-const router = express_1.default.Router({ mergeParams: true });
-let position_router = "방문자";
-let name_router = "학생";
+const router = express_1.default.Router();
+/* 전역에서 사용할 사용자 포지션과 이름 */
+let position_router = "학생";
+let name_router = "방문자";
 
 exports.router = router;
 function doIShoot500() {
   return Math.random() <= 0.5; // 50%
 }
 
+/* localhost:3000/api/courses/info */
+router.post("/info", (req, res) =>
+  __awaiter(void 0, void 0, void 0, function* () {
+    const {
+      body: { position, name },
+    } = req;
+    position_router = position;
+    name_router = name;
+    res.redirect(302, "/api/courses");
+  })
+);
+
+/* localhost:3000/api/courses : 전체 강의보기
+localhost:3000/api/courses?page=1&count=400&lastContentId=400&search
+*/
 router.get("/", (req, res) =>
   __awaiter(void 0, void 0, void 0, function* () {
     const coursesDataLsit = courseData.courses;
@@ -71,9 +89,11 @@ router.get("/", (req, res) =>
         search: qSearch,
       },
     } = req;
+
     const page = queryString_1.isSingleQueryString(qPage)
       ? parseInt(qPage || "1")
       : 1;
+
     const count = queryString_1.isSingleQueryString(qCount)
       ? parseInt(qCount || "20")
       : 20;
@@ -95,13 +115,6 @@ router.get("/", (req, res) =>
       console.error("GET /courses error 발생!", error);
     }
     if (courses) {
-      // res.json({
-      //   ok: true,
-      //   data: {
-      //     courses,
-      //   },
-      // });
-      console.log(courses.data);
       coursesDataLsit.forEach((course) => {
         price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         title = course.title;
@@ -135,46 +148,7 @@ router.get("/", (req, res) =>
   })
 );
 
-/* 강의를 볼 수 있는 메인 페이지 */
-router.post("/", (req, res) => {
-  const {
-    body: { position, name },
-  } = req;
-  const courses = courseData.courses;
-  const NUM = 25;
-  let price = "";
-  let title = "";
-  let lists = "";
-
-  position_router = position;
-  name_router = name;
-
-  // console.log(req.originalUrl);
-
-  //글자수 25이상이면 ...으로 표시
-  //가격 부분 1000단위 콤마 표시
-  courses.forEach((course) => {
-    price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    title = course.title;
-    if (title.length > NUM) {
-      title = title.slice(0, NUM) + "...";
-    }
-    lists += `
-    <li id=${course.id}>
-      <a href="/api/courses/${course.id}">
-        <div class="coverImg" style="background: url(${course.coverImageUrl}) no-repeat center;"></div>
-        <p class="title">${title}</p>
-        <p class="instructorName">${course.instructorName}</p>
-        <p class="price">₩${price}</p>
-      </a>
-  </li>
-    `;
-  });
-
-  res.send(mainCourse(position_router, name_router, lists));
-  // res.redirect(307, "/mainCourse");
-});
-
+/* localhost:3000/api/courses/:courseId : 강의 상세보기 */
 router.get("/:courseId", (req, res) =>
   __awaiter(void 0, void 0, void 0, function* () {
     var _b;
@@ -191,12 +165,6 @@ router.get("/:courseId", (req, res) =>
       console.error("GET /courses/:courseId error 발생!", error);
     }
     if (course) {
-      // res.json({
-      //   ok: true,
-      //   data: {
-      //     course,
-      //   },
-      // });
       let price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       res.send(
         courseDetail(
@@ -208,21 +176,20 @@ router.get("/:courseId", (req, res) =>
         )
       );
     } else {
-      // res.json({
-      //   ok: false,
-      //   error: {
-      //     message: "강의 상세를 가져오는데 실패했습니다.",
-      //   },
-      // });
-      res.send("오류 발생 :( 강의 상세를 가져오는데 실패했습니다..");
+      res.send("오류 발생 :( 강의 상세를 가져오는데 실패했습니다:(");
     }
   })
 );
 
+/* localhost:3000/api/courses/create/courses 
+  강의 올릴때 정보 입력하는 페이지 */
 router.get("/create/courses", (req, res) => {
   res.send(createCourse(name_router));
 });
 
+/* localhost:3000/api/courses/create/courses
+  강의 정보 입력 완료 후, post datas
+*/
 router.post("/create/courses", (req, res) =>
   __awaiter(void 0, void 0, void 0, function* () {
     var _c;

@@ -37,6 +37,7 @@ class CourseService {
   constructor(coursesRepository) {
     this.repo = coursesRepository;
   }
+  
   /** 강의 리스트 조회 */
   getCourseList({ page, count, lastContentId, search }) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -60,6 +61,7 @@ class CourseService {
       return Promise.resolve(courses);
     });
   }
+
   /** 강의 상세 */
   getCourse(courseId) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -67,6 +69,7 @@ class CourseService {
       return Promise.resolve(course);
     });
   }
+
   /** 강의 검색 */
   searchCourses({ keyword, max }) {
     return __awaiter(this, void 0, void 0, function* () {
