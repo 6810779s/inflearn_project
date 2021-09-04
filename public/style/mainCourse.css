@@ -146,11 +146,13 @@ section {
 @media (min-width: 768px) and (max-width: 1023px) {
   .header .header_center ul {
     width: 25rem;
+    top: 5.5rem;
   }
 }
 
 @media (max-width: 767px) {
   .header .header_center ul {
+    top: 4.3rem;
     width: 30rem;
   }
 }

@@ -114,8 +114,10 @@ section{
 
       @include tablet{
         width: 25rem;
+        top:5.5rem;
       }
       @include mobile{
+        top: 4.3rem;
         width: 30rem;
       }
       
