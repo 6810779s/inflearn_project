@@ -1,3 +1,6 @@
+@charset "UTF-8";
+/* 반응형 */
+/* 반응형 */
 * {
   padding: 0;
   margin: 0;
@@ -16,12 +19,31 @@ section {
   margin: auto;
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  section {
+    width: 70rem;
+  }
+}
+
+@media (max-width: 767px) {
+  section {
+    padding-top: 15rem;
+    width: 30rem;
+  }
+}
+
 .wrap {
   width: 45rem;
   height: 35rem;
   background: white;
   margin: auto;
   box-shadow: 10px 10px 15px #000000a8;
+}
+
+@media (max-width: 767px) {
+  .wrap {
+    width: 30rem;
+  }
 }
 
 .top_bar {
@@ -41,10 +63,23 @@ article {
   width: 45rem;
 }
 
+@media (max-width: 767px) {
+  article {
+    width: 30rem;
+  }
+}
+
 article form {
   width: 45rem;
   height: 100%;
   font-size: 2.3rem;
+}
+
+@media (max-width: 767px) {
+  article form {
+    width: 30rem;
+    font-size: 1.6rem;
+  }
 }
 
 article form li {
@@ -61,7 +96,19 @@ article form li input {
   margin-left: 3rem;
 }
 
+@media (max-width: 767px) {
+  article form li input {
+    width: 15rem;
+  }
+}
+
 article form li:last-child {
   margin-top: 5rem;
+}
+
+@media (max-width: 767px) {
+  article form li:last-child {
+    margin: 3rem auto;
+  }
 }
 /*# sourceMappingURL=createCourse.css.map */

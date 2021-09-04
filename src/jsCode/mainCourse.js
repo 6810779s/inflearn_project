@@ -52,7 +52,6 @@ const mainCourse = function (position, user_name, lists) {
   </section>
   <script>
     let courseObject = ${courseList};
-    let name_router = ${user_name};
   </script>
   <script src="/js/mainCourse.js"></script>
 </body>

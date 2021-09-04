@@ -101,27 +101,29 @@ router.get("/courses", (req, res) =>
             <a href="/api/courses/${result.id}">
             <div class="coverImg" style="background: url(${courseData.getTemporaryImageURL()}) no-repeat center; background-size: cover;"></div>
             <div class="info">
-              <h1 class="title">${result.title}</p>
+              <h1 class="title">${result.title}</h1>
               <p class="name">₩${result.instructorName}</p>
             </div>
-            
             </a>
           </li>
         `;
       });
-      res.send(courseSearch(name_router, lists));
+      res.send(courseSearch(name_router, lists, position_router));
     } else {
       const doIShoot500 = Math.random() <= 0.5;
       if (doIShoot500) {
-        res.sendStatus(500);
+        res.sendStatus(500).send("확률적으로 발생하는 오류");
         return;
       }
-      res.json({
-        ok: false,
-        error: {
-          message: "검색에 실패했습니다.",
-        },
-      });
+      // res.json({
+      //   ok: false,
+      //   error: {
+      //     message: "검색에 실패했습니다.",
+      //   },
+      // });
+      res.send(
+        `<script>alert("검색 실패.다시 시도해주세요."); window.location.href = "/api/courses/"; </script>`
+      );
     }
   })
 );

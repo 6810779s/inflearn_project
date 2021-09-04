@@ -1,4 +1,6 @@
 @import '../variables/variables.scss';
+@import '../mixin//mixin.scss';
+
 *{
   margin: 0;
   padding: 0;
@@ -22,6 +24,13 @@ a{
 section{
   width: 120rem;
   margin: auto;
+  @include tablet{
+    width: 70rem;
+  }
+  @include mobile{
+    width: 30rem;
+    position: relative;
+  }
 }
 
 .header{
@@ -29,10 +38,43 @@ section{
   margin-bottom: 5rem;
   display: flex;
   justify-content:space-between;
+  @include mobile{
+    display:inline-block;
+    height: 10rem;
+  }
+
+  .header_left{
+    padding-top: calc((8rem - 6.25rem)/2);
+      img{
+        @include tablet{
+          width: 20rem;
+          align-items:center;
+        }
+        @include mobile{
+          width: 15rem;
+          align-items:center;
+        }
+      
+    }
+    @include mobile{
+      float: left;
+    }
+    
+  }
   .header_center{
     width: 40rem;
     padding-top: calc((8rem - 3rem)/2);
     position: relative;
+
+    @include tablet{
+      width: 25rem;
+    }
+    @include mobile{
+      width: 30rem;
+      padding-top: 1rem;
+      float: left;
+      
+    }
     input{
       font-size: 1.5rem;
       height: 3rem;
@@ -44,6 +86,13 @@ section{
       border: 0.5px solid $mainColor;
       &:focus{
         outline: none;
+      }
+
+      @include tablet{
+        width: 25rem;
+      }
+      @include mobile{
+        width: 30rem;
       }
 
     }
@@ -62,6 +111,14 @@ section{
       line-height: 3.5rem;
       z-index: 10;
       background: white;
+
+      @include tablet{
+        width: 25rem;
+      }
+      @include mobile{
+        width: 30rem;
+      }
+      
       li{
         height: 3.5rem;
         font-size: 2rem;
@@ -69,6 +126,9 @@ section{
         overflow: hidden;
         &:hover{
           background: rgb(224, 219, 219);
+        }
+        @include mobile{
+          font-size: 1.5rem;
         }
       }
       
@@ -78,6 +138,11 @@ section{
   .header_right{
     font-size: 2rem;
     padding-top: calc((8rem - 2.533rem)/2);
+    @include mobile{
+      font-size: 1.5rem;
+      position: absolute;
+      right: 0;
+    }
   }
 }
 
@@ -86,6 +151,13 @@ section{
   height: calc(45rem *4);
   position: relative;
   overflow: hidden;
+  @include tablet{
+    width: 70rem;
+    align-items:center;
+  }
+  @include mobile{
+    width: 30rem;
+  }
   .loading{
     display: none;
     width: 70rem;
@@ -97,7 +169,11 @@ section{
     text-align: center;
     vertical-align: middle;
     background: rgb(233, 230, 230);
-    
+
+    @include mobile{
+      width: 30rem;
+    }
+
     &.showLoading{
       display: block;
     }
@@ -105,7 +181,9 @@ section{
   
   .course{
     width: 75rem;
-    background: burlywood;
+    @include mobile{
+      width: 30rem;
+    }
     li{
       width: calc((75rem / 2) - 5rem); 
       height: 40rem; 
@@ -113,6 +191,10 @@ section{
       margin-bottom: 5rem;
       font-size: 2.7rem;
       line-height: 3.5rem;
+
+      @include mobile{
+        width: 30rem;
+      }
       &:nth-child(odd){
         margin-right: 5rem;
       }
@@ -143,6 +225,24 @@ section{
     margin-left: calc(120rem - 40rem);
     padding-left: 3rem;
     border:1px solid $subMainColor2;
+
+    @include tablet{
+      width: 20rem;
+      position:fixed;
+      margin-left: 0;
+      left: 0;
+      top: 50rem;
+    }
+    @include mobile{
+      width: 20rem;
+      height: 18rem;
+      position:fixed;
+      margin-left: 0;
+      left: 0;
+      top: 55rem;
+      background: $subMainColor2;
+      opacity: 0.7;
+    }
     
 
     .user_profile{
@@ -150,11 +250,6 @@ section{
       line-height: 4rem;
       margin-top: 1rem;
 
-      // .create{
-      //   font-size: 2rem;
-      //   margin-top: 5rem;
-
-      // }
     }
     .control{
       width: calc(40rem - 4rem);
@@ -162,6 +257,11 @@ section{
       position: absolute;
       font-size: 2.5rem;
       bottom: 1rem;
+
+      @include mobileAndTablet{
+        width: calc(20rem - 4rem);
+      }
+
       .create{ 
         font-size: 1.8rem;
         background: $mainColor;
@@ -169,6 +269,19 @@ section{
         border-radius: 0.5rem;
         border-radius: 1rem;
         display: none;
+
+        @include tablet{
+          font-size: 1.5rem;
+          padding: 0.5rem 1.3rem;
+          margin-top: calc((4rem - 2.9rem)/2);
+        }
+
+        @include mobile{
+          font-size: 1.5rem;
+          padding: 0.5rem 1.3rem;
+          margin-top: calc((4rem - 2.9rem)/2);
+        }
+        
 
         &.show{
           display: block;
@@ -178,15 +291,20 @@ section{
           background: $subMainColor1;
         }
       }
-      // .show{
-      //   font-size: 2rem;
-      //   cursor: pointer;
 
-        
-      // }
       a:last-child{
         cursor: pointer;
         float: right;
+        @include tablet{
+          line-height: 4rem;
+          font-size: 1.8rem;
+        }
+        @include mobile{
+          line-height: 4rem;
+          font-size: 1.5rem;
+        }
+
+        
       }
       
     }

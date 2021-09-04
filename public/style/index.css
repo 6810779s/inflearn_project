@@ -1,3 +1,6 @@
+@charset "UTF-8";
+/* 반응형 */
+/* 반응형 */
 * {
   margin: 0;
   padding: 0;
@@ -11,25 +14,22 @@ body {
   font-size: 10px;
 }
 
-html .caption,
-body .caption {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: rgba(59, 59, 59, 0.623);
-}
-
 .container {
-  padding-top: 7rem;
+  height: 100%;
   position: relative;
 }
 
 .container .wrap {
   width: 45rem;
-  height: 70rem;
   background: white;
-  margin: auto;
+  margin: 5rem auto;
   box-shadow: 10px 10px 15px #000000a8;
+}
+
+@media (max-width: 1024px) {
+  .container .wrap {
+    width: 35rem;
+  }
 }
 
 .top_bar {
@@ -50,9 +50,21 @@ body .caption {
   width: 45rem;
 }
 
+@media (max-width: 1024px) {
+  .article {
+    width: 35rem;
+  }
+}
+
 .article form {
   width: 45rem;
   height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .article form {
+    width: 35rem;
+  }
 }
 
 .article form input {
@@ -81,12 +93,24 @@ body .caption {
   flex-direction: column;
 }
 
+@media (max-width: 1024px) {
+  .article form .seclect_position {
+    height: 40rem;
+  }
+}
+
 .article form .seclect_position button[type=submit] {
   position: relative;
   border: none;
   height: calc((70rem - 7.4rem)/2);
   background: #b3cc7f;
   cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .article form .seclect_position button[type=submit] {
+    height: calc((47.4rem - 7.1rem)/2);
+  }
 }
 
 .article form .seclect_position button[type=submit] p {
@@ -101,8 +125,20 @@ body .caption {
   margin-left: 9rem;
 }
 
+@media (max-width: 1024px) {
+  .article form .seclect_position button[type=submit] img[alt=teacher] {
+    height: 15rem;
+  }
+}
+
 .article form .seclect_position button[type=submit] img[alt=student] {
   height: 22rem;
+}
+
+@media (max-width: 1024px) {
+  .article form .seclect_position button[type=submit] img[alt=student] {
+    height: 17rem;
+  }
 }
 
 .article form .seclect_position button[type=submit]:first-child {

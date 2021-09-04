@@ -1,0 +1,22 @@
+/* 반응형 */
+@mixin mobile { // 0~767px
+  @media (max-width: #{$breakpoint-tablet - 1px}){
+    @content;
+  }
+}
+
+@mixin tablet { //768px ~ 1023px
+  @media (min-width: #{$breakpoint-tablet}) and  (max-width: #{$breakpoint-desktop - 1px}){
+    @content;
+  }
+}
+
+@mixin mobileAndTablet { // 모바일부터 태블릿까지
+  @media (max-width: 1024px){
+    @content;
+  }
+}
+
+@mixin mainWidth{
+  width: 45rem
+}

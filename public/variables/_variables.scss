@@ -4,6 +4,7 @@ $subMainColor2: rgb(214,243,156);
 $boxshadow: #000000a8;
 $mainTextSize: 2rem;
 
-@mixin mainWidth{
-  width: 45rem
-}
+/* 반응형 */
+$breakpoint-mobile: 360px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;

@@ -1,4 +1,6 @@
 @import '../variables/variables.scss';
+@import '../mixin/mixin.scss';
+
 *{
   padding: 0;
   margin: 0;
@@ -13,6 +15,12 @@ body{
 section{
   width: 120rem;
   margin: auto;
+  @include tablet{
+    width: 70rem;
+  }
+  @include mobile{
+    width: 30rem;
+  }
 }
 
 a{
@@ -26,6 +34,10 @@ a{
   display: flex;
   justify-content:space-between;
 
+  #top_logo{
+    width: 20rem;
+  }
+
   .header_right{
     font-size: 2rem;
     padding-top: calc((8rem - 2.533rem)/2);
@@ -34,32 +46,62 @@ a{
 
 article{
   width: 120rem;
+  @include tablet{
+    width: 70rem;
+  }
+  @include mobile{
+    width: 30rem;
+  }
   .top_course_info{
     width: 100%;
     height: 30rem;
     background: rgb(10,34,50);
     display: flex;
 
+    @include mobile{
+      height: 60rem;
+      flex-direction: column;
+    }
+
     .courseMainImg{
       width: 40rem;
       height: 25rem;
       margin: calc((30rem - 25rem)/2) 5rem;
       background-size: cover;
+
+      @include tablet{
+        margin-left: 2rem;
+      }
+      @include mobile{
+        width: 30rem;
+        margin: 0;
+      }
     }
+    
 
     .courseTitle{
       width: 70rem;
       height: 25rem;
       margin: calc((30rem - 25rem)/2) 5rem;
       color: white;
+
+      @include mobile{
+        width: 30rem;
+        height: 35rem;
+        margin: 0;
+      }
       h1{
         width: 100%;
         height: 16rem;
         font-size: 3rem;
+        @include mobile{
+          height: 25rem;
+        }
       }
       p{
         font-size: 2rem;
       }
+
     }
   }
   .course_info{
@@ -76,6 +118,9 @@ article{
           font-size: 2rem;
         }
       }
+      @include mobile{
+        width: 30rem;
+      }
       
     }
 
@@ -88,6 +133,26 @@ article{
       border:1px solid rgb(248,249,250);
       border-radius: 2rem;
 
+      @include tablet{
+        width: 20rem;
+        height: 25rem;
+        position:fixed;
+        margin-left: 0;
+        left: 0;
+        top: 50rem;
+        opacity: 0.8;
+      }
+
+      @include mobile{
+        width: 20rem;
+        height: 25rem;
+        position:fixed;
+        margin-left: 0;
+        left: 0;
+        top: 45rem;
+        opacity: 0.8;
+      }
+
       .user_profile{
         padding: 3rem;
         height: 15rem;
@@ -95,14 +160,25 @@ article{
         background: white;
         border-top-left-radius: 2rem;
         border-top-right-radius: 2rem;
+        @include mobileAndTablet{
+          height: 15rem;
+          text-align: center;
+          font-size: 2rem;
+        }
         p{
           font-size: 4rem;
           margin-bottom: 2rem;
+          @include mobileAndTablet{
+            font-size: 2.3rem;
+          }
         }
         a{
           background: $mainColor;
           padding: 0.8rem 1.5rem;
           border-radius: 0.5rem;
+          @include mobileAndTablet{
+            font-size: 2rem;
+          }
         }
       }
 
@@ -115,7 +191,13 @@ article{
         border-radius: 2rem;
         font-size: 2rem;
         line-height: 4rem;
+        @include mobileAndTablet{
+          width: 20rem;
+          font-size: 1.5rem;
+        }
       }
+
+      
     }
 
     

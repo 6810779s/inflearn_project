@@ -1,3 +1,6 @@
+@charset "UTF-8";
+/* 반응형 */
+/* 반응형 */
 * {
   padding: 0;
   margin: 0;
@@ -14,6 +17,18 @@ section {
   margin: auto;
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  section {
+    width: 70rem;
+  }
+}
+
+@media (max-width: 767px) {
+  section {
+    width: 30rem;
+  }
+}
+
 a {
   color: black;
   text-decoration: none;
@@ -26,6 +41,10 @@ a {
   justify-content: space-between;
 }
 
+.header #top_logo {
+  width: 20rem;
+}
+
 .header .header_right {
   font-size: 2rem;
   padding-top: calc((8rem - 2.533rem)/2);
@@ -35,11 +54,30 @@ article {
   width: 120rem;
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  article {
+    width: 70rem;
+  }
+}
+
+@media (max-width: 767px) {
+  article {
+    width: 30rem;
+  }
+}
+
 article .top_course_info {
   width: 100%;
   height: 30rem;
   background: #0a2232;
   display: flex;
+}
+
+@media (max-width: 767px) {
+  article .top_course_info {
+    height: 60rem;
+    flex-direction: column;
+  }
 }
 
 article .top_course_info .courseMainImg {
@@ -49,6 +87,19 @@ article .top_course_info .courseMainImg {
   background-size: cover;
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  article .top_course_info .courseMainImg {
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  article .top_course_info .courseMainImg {
+    width: 30rem;
+    margin: 0;
+  }
+}
+
 article .top_course_info .courseTitle {
   width: 70rem;
   height: 25rem;
@@ -56,10 +107,24 @@ article .top_course_info .courseTitle {
   color: white;
 }
 
+@media (max-width: 767px) {
+  article .top_course_info .courseTitle {
+    width: 30rem;
+    height: 35rem;
+    margin: 0;
+  }
+}
+
 article .top_course_info .courseTitle h1 {
   width: 100%;
   height: 16rem;
   font-size: 3rem;
+}
+
+@media (max-width: 767px) {
+  article .top_course_info .courseTitle h1 {
+    height: 25rem;
+  }
 }
 
 article .top_course_info .courseTitle p {
@@ -85,6 +150,12 @@ article .course_info .article_left .course_infoDetailed p {
   font-size: 2rem;
 }
 
+@media (max-width: 767px) {
+  article .course_info .article_left {
+    width: 30rem;
+  }
+}
+
 article .course_info .article_right {
   width: 40rem;
   position: fixed;
@@ -93,6 +164,30 @@ article .course_info .article_right {
   background: #f8f9fa;
   border: 1px solid #f8f9fa;
   border-radius: 2rem;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  article .course_info .article_right {
+    width: 20rem;
+    height: 25rem;
+    position: fixed;
+    margin-left: 0;
+    left: 0;
+    top: 50rem;
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 767px) {
+  article .course_info .article_right {
+    width: 20rem;
+    height: 25rem;
+    position: fixed;
+    margin-left: 0;
+    left: 0;
+    top: 45rem;
+    opacity: 0.8;
+  }
 }
 
 article .course_info .article_right .user_profile {
@@ -104,15 +199,35 @@ article .course_info .article_right .user_profile {
   border-top-right-radius: 2rem;
 }
 
+@media (max-width: 1024px) {
+  article .course_info .article_right .user_profile {
+    height: 15rem;
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+
 article .course_info .article_right .user_profile p {
   font-size: 4rem;
   margin-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+  article .course_info .article_right .user_profile p {
+    font-size: 2.3rem;
+  }
 }
 
 article .course_info .article_right .user_profile a {
   background: #7acc98;
   padding: 0.8rem 1.5rem;
   border-radius: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+  article .course_info .article_right .user_profile a {
+    font-size: 2rem;
+  }
 }
 
 article .course_info .article_right .info {
@@ -124,5 +239,12 @@ article .course_info .article_right .info {
   border-radius: 2rem;
   font-size: 2rem;
   line-height: 4rem;
+}
+
+@media (max-width: 1024px) {
+  article .course_info .article_right .info {
+    width: 20rem;
+    font-size: 1.5rem;
+  }
 }
 /*# sourceMappingURL=courseDetailed.css.map */

@@ -138,12 +138,15 @@ router.get("/", (req, res) =>
         res.sendStatus(500).send("확률적으로 발생하는 오류");
         return;
       }
-      res.json({
-        ok: false,
-        error: {
-          message: "강의 리스트를 가져오는데 실패했습니다.",
-        },
-      });
+      // res.json({
+      //   ok: false,
+      //   error: {
+      //     message: "강의 리스트를 가져오는데 실패했습니다.",
+      //   },
+      // });
+      res.send(
+        `<script>alert("강의 리스트를 가져오는데 실패했습니다.다시 시도해주세요."); window.location.href = "/api/courses/"; </script>`
+      );
     }
   })
 );
@@ -228,7 +231,7 @@ router.post("/create/courses", (req, res) =>
       res.redirect(302, `/api/courses/${createdCourseId}`);
     } else {
       if (doIShoot500()) {
-        res.sendStatus(500);
+        res.sendStatus(500).send("확률적으로 발생하는 오류");
         return;
       }
       // res.json({
@@ -238,7 +241,7 @@ router.post("/create/courses", (req, res) =>
       //   },
       // });
       res.send(
-        `<script>alert("강의 제목은 문자열, 강의 가격은 숫자이어야 합니다."); window.location.href = "localhost:3000/"; </script>`
+        `<script>alert("강의 제목은 문자열, 강의 가격은 숫자이어야 합니다."); window.location.href = "/api/courses/"; </script>`
       );
     }
   })
