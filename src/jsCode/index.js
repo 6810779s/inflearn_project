@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+const mainCourse = require("./mainCourse");
+
+const index = function () {
+  return `
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -17,8 +21,8 @@
       <article class="article">
         <form action="/api/courses/info" method="POST">
           <div class="putName">
-            <label autocomplete="off" for="name">이름</label>
-            <input type="text" name="name" placeholder="이름을 적어주세요" value="" maxlength="10" required>
+            <label  for="name">이름</label>
+            <input autocomplete="off" type="text" name="name" placeholder="이름을 적어주세요" value="" maxlength="10" required>
           </div>
           <div class="seclect_position"> 
             <button type="submit" name="position" value="강사"><p>강사</p><img src="/img/main_home/teacher.png" alt="teacher"></button>
@@ -37,3 +41,7 @@
   </script>
 </body>
 </html>
+  `;
+};
+
+module.exports = index;

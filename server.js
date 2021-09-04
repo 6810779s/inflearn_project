@@ -17,6 +17,7 @@ const CoursesRepository_1 = __importDefault(
 const CourseService_1 = __importDefault(require("./src/service/CourseService"));
 const courses_1 = require("./src/api/courses");
 const search_1 = require("./src/api/search");
+const index = require("./src/jsCode/index");
 
 const app = express_1.default();
 const port = process.env.PORT || "3000";
@@ -34,7 +35,7 @@ app.use("/api/search", search_1.router);
 
 /* 서버시작 시 열리는 페이지 */
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/html/index.html");
+  res.send(index());
 });
 
 app.use((req, res) => {
