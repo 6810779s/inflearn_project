@@ -93,6 +93,7 @@ router.get("/courses", (req, res) =>
       console.error("/search/course error 발생!", error);
     }
     if (searchResult) {
+      console.log(searchResult);
       let lists = "";
 
       searchResult.map((result) => {
