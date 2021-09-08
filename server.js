@@ -10,6 +10,7 @@ const http_1 = __importDefault(require("http"));
 const path_1 = __importDefault(require("path"));
 const cors_1 = __importDefault(require("cors"));
 const DIContainer_1 = __importDefault(require("./DIContainer"));
+const compression = require("compression");
 const CoursesRepository_1 = __importDefault(
   require("./src/repository/CoursesRepository")
 );
@@ -22,6 +23,7 @@ const app = express_1.default();
 const port = process.env.PORT || "3000";
 
 app.set("port", port);
+app.use(compression());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use(express_1.default.static(path_1.default.join(__dirname, "public"))); //modify
