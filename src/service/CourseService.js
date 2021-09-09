@@ -37,7 +37,7 @@ class CourseService {
   constructor(coursesRepository) {
     this.repo = coursesRepository;
   }
-  
+
   /** 강의 리스트 조회 */
   getCourseList({ page, count, lastContentId, search }) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -50,7 +50,7 @@ class CourseService {
       ) {
         return Promise.reject(
           new Error("page, count 또는 lastContentId는 음수일 수 없습니다.")
-        );
+        ).catch(alert("음수는 불가능"));
       }
       const courses = yield this.repo.list({
         page: p,
@@ -74,7 +74,9 @@ class CourseService {
   searchCourses({ keyword, max }) {
     return __awaiter(this, void 0, void 0, function* () {
       if (max !== undefined && max <= 0) {
-        return Promise.reject(new Error("max는 음수일 수 없습니다."));
+        return Promise.reject(new Error("max는 음수일 수 없습니다.")).catch(
+          alert("음수는 불가능")
+        );
       }
       const m = max || 10;
       const courses = (yield this.repo.list({
@@ -98,7 +100,14 @@ class CourseService {
         );
       }
       if (price < 0) {
-        return Promise.reject(new Error("강의 가격은 음수일 수 없습니다."));
+        return Promise.reject(
+          new Error("강의 가격은 음수일 수 없습니다.")
+        ).then(
+          (err) => {},
+          (err) => {
+            console.log(err);
+          }
+        );
       }
       const createdCourseId = yield this.repo.create({
         title,

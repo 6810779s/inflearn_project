@@ -7,7 +7,6 @@ function filterSearching() {
   let header_center_ul = document.createElement("ul");
   header_center_ul.id = "listsUl";
   header_center.appendChild(header_center_ul);
-  let i = 0;
   let j = 0;
   let id = -1;
   let courseLists = [];
@@ -27,7 +26,7 @@ function filterSearching() {
 
     j++;
   }
-  
+
   courseLists.map((course) => {
     let li = document.createElement("li");
     let a = document.createElement("a");
@@ -64,7 +63,7 @@ input_search.addEventListener("blur", (e) => {
   if (ul) {
     setTimeout(() => {
       header_center.removeChild(ul);
-    }, 130);
+    }, 200);
   }
 });
 

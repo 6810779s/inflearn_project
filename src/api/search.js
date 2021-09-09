@@ -70,7 +70,7 @@ router.post("/courses/:userName/:position", (req, res) => {
 //keyword: 검색 결과
 //max: 검색 결과 카운트의 max값
 //http://localhost:3000/api/search/courses?keyword=C&max=12
-router.get("/courses", (req, res) =>
+router.get("/courses", (req, res, next) =>
   __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const {
@@ -93,7 +93,6 @@ router.get("/courses", (req, res) =>
       console.error("/search/course error 발생!", error);
     }
     if (searchResult) {
-      console.log(searchResult);
       let lists = "";
 
       searchResult.map((result) => {
@@ -113,18 +112,13 @@ router.get("/courses", (req, res) =>
     } else {
       const doIShoot500 = Math.random() <= 0.5;
       if (doIShoot500) {
-        res.sendStatus(500).send("확률적으로 발생하는 오류");
-        return;
+        res.json({
+          ok: false,
+          error: {
+            message: "검색에 실패했습니다.",
+          },
+        });
       }
-      // res.json({
-      //   ok: false,
-      //   error: {
-      //     message: "검색에 실패했습니다.",
-      //   },
-      // });
-      res.send(
-        `<script>alert("검색 실패.다시 시도해주세요."); window.location.href = "/api/courses/"; </script>`
-      );
     }
   })
 );
