@@ -224,7 +224,9 @@ router.post("/create/courses", (req, res, next) =>
       res.redirect(302, `/api/courses/${createdCourseId}`);
     } else {
       if (doIShoot500()) {
-        next("강의를 추가하는데 실패했습니다. 제목과 가격을 정확히 입력해 주세요.");
+        next(
+          "강의를 추가하는데 실패했습니다. 제목과 가격을 정확히 입력해 주세요."
+        );
         return;
       }
     }
