@@ -112,12 +112,8 @@ router.get("/courses", (req, res, next) =>
     } else {
       const doIShoot500 = Math.random() <= 0.5;
       if (doIShoot500) {
-        res.json({
-          ok: false,
-          error: {
-            message: "검색에 실패했습니다.",
-          },
-        });
+        next("검색에 실패했습니다.");
+        return;
       }
     }
   })

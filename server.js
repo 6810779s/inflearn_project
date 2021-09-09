@@ -37,6 +37,15 @@ app.get("/", (req, res) => {
   res.send(index());
 });
 
+app.use((err, req, res, next) => {
+  res.json({
+    ok: false,
+    error: {
+      message: err,
+    },
+  });
+});
+
 app.use((req, res) => {
   res.send(`<h1>Sorry, page not found :(</h1>`);
 });

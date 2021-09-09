@@ -73,7 +73,7 @@ router.post("/info", (req, res) =>
 /* localhost:3000/api/courses : 전체 강의보기
 localhost:3000/api/courses?page=1&count=400&lastContentId=400&search
 */
-router.get("/", (req, res) =>
+router.get("/", (req, res, next) =>
   __awaiter(void 0, void 0, void 0, function* () {
     const coursesDataLsit = courseData.courses;
     const NUM = 25;
@@ -135,18 +135,9 @@ router.get("/", (req, res) =>
       res.send(mainCourse(position_router, name_router, lists));
     } else {
       if (doIShoot500()) {
-        res.sendStatus(500).send("확률적으로 발생하는 오류");
+        next("강의 리스트를 가져오는데 실패했습니다.");
         return;
       }
-      // res.json({
-      //   ok: false,
-      //   error: {
-      //     message: "강의 리스트를 가져오는데 실패했습니다.",
-      //   },
-      // });
-      res.send(
-        `<script>alert("강의 리스트를 가져오는데 실패했습니다.다시 시도해주세요."); window.location.href = "/api/courses/"; </script>`
-      );
     }
   })
 );
@@ -179,7 +170,11 @@ router.get("/:courseId", (req, res) =>
         )
       );
     } else {
-      res.send("오류 발생 :( 강의 상세를 가져오는데 실패했습니다:(");
+      res
+        .send(
+          `<script>alert("오류 발생!! 강의 상세를 가져오는데 실패했습니다:(")</script>`
+        )
+        .redirect(302, `/api/courses/`);
     }
   })
 );
@@ -193,7 +188,7 @@ router.get("/create/courses", (req, res) => {
 /* localhost:3000/api/courses/create/courses
   강의 정보 입력 완료 후, post datas
 */
-router.post("/create/courses", (req, res) =>
+router.post("/create/courses", (req, res, next) =>
   __awaiter(void 0, void 0, void 0, function* () {
     var _c;
     const {
@@ -202,13 +197,11 @@ router.post("/create/courses", (req, res) =>
     const price = Number(_price);
     const instructorName = name_router;
     if (typeof title !== "string" || isNaN(price)) {
-      res.json({
-        ok: false,
-        error: {
-          message: "강의 제목은 문자열, 강의 가격은 숫자이어야 합니다.",
-        },
-      });
-      return;
+      res
+        .send(
+          `<script>alert("강의 제목은 문자열, 강의 가격은 숫자이어야 합니다.")</script>`
+        )
+        .redirect(302, `/api/courses/`);
     }
     let createdCourseId;
     try {
@@ -231,18 +224,9 @@ router.post("/create/courses", (req, res) =>
       res.redirect(302, `/api/courses/${createdCourseId}`);
     } else {
       if (doIShoot500()) {
-        res.sendStatus(500).send("확률적으로 발생하는 오류");
+        next("강의를 추가하는데 실패했습니다. 제목과 가격을 정확히 입력해 주세요.");
         return;
       }
-      // res.json({
-      //   ok: false,
-      //   error: {
-      //     message: "강의를 추가하는데 실패했습니다.",
-      //   },
-      // });
-      res.send(
-        `<script>alert("강의 제목은 문자열, 강의 가격은 숫자이어야 합니다."); window.location.href = "/api/courses/"; </script>`
-      );
     }
   })
 );
