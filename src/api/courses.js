@@ -113,6 +113,9 @@ router.get("/", (req, res, next) =>
         : _a.getCourseList({ page, count, lastContentId, search });
     } catch (error) {
       console.error("GET /courses error 발생!", error);
+      res.send(
+        `<script>alert("${error}"); window.location.href = "/api/courses/"; </script>`
+      );
     }
     if (courses) {
       coursesDataLsit.forEach((course) => {
@@ -135,7 +138,7 @@ router.get("/", (req, res, next) =>
       res.send(mainCourse(position_router, name_router, lists));
     } else {
       if (doIShoot500()) {
-        next("강의 리스트를 가져오는데 실패했습니다.");
+        next("강의 리스트를 가져오는데 실패했습니다. 새로고침을 눌러주세요 :)");
         return;
       }
     }
@@ -157,6 +160,9 @@ router.get("/:courseId", (req, res) =>
         : _b.getCourse(parseInt(courseId));
     } catch (error) {
       console.error("GET /courses/:courseId error 발생!", error);
+      res.send(
+        `<script>alert("${error}"); window.location.href = "/api/courses/"; </script>`
+      );
     }
     if (course) {
       let price = course.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -171,6 +177,7 @@ router.get("/:courseId", (req, res) =>
       );
     } else {
       res
+        .status(500)
         .send(
           `<script>alert("오류 발생!! 강의 상세를 가져오는데 실패했습니다:(")</script>`
         )
@@ -211,6 +218,9 @@ router.post("/create/courses", (req, res, next) =>
         : _c.createCourse({ title, price, instructorName });
     } catch (error) {
       console.error("POST /courses error 발생!", error);
+      res.send(
+        `<script>alert("${error}"); window.location.href = "/api/courses/"; </script>`
+      );
     }
     if (createdCourseId !== undefined) {
       courseData.courses.reverse().push({

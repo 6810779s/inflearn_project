@@ -70,7 +70,7 @@ class CoursesRepository {
     );
     return new Promise((resolve, reject) => {
       if (this.doIReject()) {
-        reject({ code: -1, message: "랜덤하게 발생하는 강제 에러 입니다." });
+        reject({ code: -1, message: "Error!!! 다시 시도해주세요 :)" });
         return;
       }
       setTimeout(() => {
@@ -91,7 +91,10 @@ class CoursesRepository {
   create({ title, price, instructorName }) {
     return new Promise((resolve, reject) => {
       if (this.doIReject()) {
-        reject({ code: -2, message: "랜덤하게 발생하는 강제 에러 입니다." });
+        reject({
+          code: -2,
+          message: "Error!! 제목과 가격을 다시한번 확인해 주세요 :)",
+        });
         return;
       }
       this.lastCourseId = this.lastCourseId + 1;
