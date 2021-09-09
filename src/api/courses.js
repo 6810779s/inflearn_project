@@ -204,11 +204,9 @@ router.post("/create/courses", (req, res, next) =>
     const price = Number(_price);
     const instructorName = name_router;
     if (typeof title !== "string" || isNaN(price)) {
-      res
-        .send(
-          `<script>alert("강의 제목은 문자열, 강의 가격은 숫자이어야 합니다.")</script>`
-        )
-        .redirect(302, `/api/courses/`);
+      res.send(
+        `<script>alert("강의 제목은 문자열, 강의 가격은 숫자이어야 합니다."); window.location.href = "/api/courses/"; </script>`
+      );
     }
     let createdCourseId;
     try {
